@@ -4,33 +4,28 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
     <script src="http://code.highcharts.com/stock/highstock.js"></script>
-    <script src="../src/directives/highcharts-ng.js"></script>
+    <script src="../src/directives/highstocks-ng.js"></script>
 </head>
 <body>
     <h5>HighStock example</h5>
 
     <div ng-controller="ctrl">
-        <highstock id="chartStock"
-                   series="chart.series"
-                   title="chart.title"
-                   options="chart.options"
-                   rangeSelector="chart.rangeSelector" />
+        <highstock ng-model="chart"></highstock>
     </div>
 
     <script>
-        angular.module('app', ['highcharts-ng'])
-            .controller('ctrl', ['$scope', function($scope) {
+        angular.module('app', ['highstocks-ng'])
+
+	        .controller('ctrl', ['$scope', function($scope) {
                 $scope.chart = {
                     title: {
                         text: 'highstock example'
                     },
-                    options: {
-                        chart: {
-                            type: 'line'
-                        },
-                        rangeSelector: {
-                            selected: 1
-                        }
+                    chart: {
+                        type: 'line'
+                    },
+                    rangeSelector: {
+                        selected: 1
                     },
                     series: [
                         {
@@ -169,7 +164,7 @@
                                 [1167350400000,84.84]
                             ]
                         }
-                    ],
+                    ]
                 };
             }]);
     </script>
